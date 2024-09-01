@@ -19,6 +19,7 @@ func NewCategory(name string) (*Category, error)  {
 		UpdatedAt: time.Now(),
 	}
 
+	// business rules
 	err := category.IsValid()
 
 	if err != nil {
