@@ -1,17 +1,21 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"log"
+	"net/http"
+
+	"github.com/ghenoo/microservices-go/cmd/db"
+	"github.com/ghenoo/microservices-go/cmd/handlers"
+)
+
 
 func main() {
-	router := gin.Default()
+	db.InitDB()
+    handlers.SetupRoutes()
 
-	router.GET("/healthy", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"success": true,
-		})
-	})
-
-	CategoryRoutes(router)
-
-	router.Run(":8080")
+    log.Println("Server is starting on port 8080...")
+    err := http.ListenAndServe(":8080", nil)
+    if err != nil {
+        log.Fatalf("Failed to start the server: %v", err)
+    }
 }
