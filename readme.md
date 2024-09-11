@@ -10,7 +10,7 @@ Estudo realizado para aprendizagem, criando micro serviços em go, utilizando do
 - [Docker](https://docs.docker.com/desktop/) -> Container
 - [Kafka](https://docs.docker.com/desktop/) -> Eventos
 - [Postman](https://docs.docker.com/desktop/) -> Requisições
-- [Postgresql](https://docs.docker.com/desktop/) -> database
+- [Postgresql](https://docs.docker.com/desktop/) -> Database
 - [Go](https://docs.docker.com/desktop/) -> Stack
 
 ## Exemplo
