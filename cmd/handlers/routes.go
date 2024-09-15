@@ -5,7 +5,9 @@ import (
 	"fmt"
 	"net/http"
 
+	_ "github.com/ghenoo/microservices-go/cmd/api/docs"
 	"github.com/ghenoo/microservices-go/cmd/producer"
+	httpSwagger "github.com/swaggo/http-swagger"
 )
 
 var KafkaWriter *producer.KafkaWriter
@@ -23,11 +25,13 @@ func ListEndpointsHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func SetupRoutes() {
-    http.HandleFunc("/endpoints", ListEndpointsHandler) // Novo endpoint para listar as rotas
+    http.HandleFunc("/endpoints", ListEndpointsHandler) 
     http.HandleFunc("/users", GetUsersHandler)
     http.HandleFunc("/users/add", PostUserHandler)
     http.HandleFunc("/send-message", SendMessageHandler)
     http.HandleFunc("/status", StatusHandler)
+
+	http.HandleFunc("/swagger/*any", httpSwagger.WrapHandler)
 }
 
 func SendMessageHandler(w http.ResponseWriter, r *http.Request) {
