@@ -1,6 +1,6 @@
 ## Microserviços em GO
 
-Estudo realizado para aprendizagem, criando micro serviços em go, utilizando docker, postgresql, postman e kafka. - [front-end](https://github.com/Ghenoo/front-microgo) sendo criado.
+Estudo realizado para aprendizagem, criando micro serviços em go, utilizando docker, postgresql, postman e kafka. - [front-end](https://github.com/Ghenoo/frontEnd-micro) sendo criado.
 
 ## Ferramentas e Pacotes
 
