@@ -10,13 +10,24 @@ import (
 
 var KafkaWriter *producer.KafkaWriter
 
-func SetupRoutes() {
-	http.HandleFunc("/users", GetUsersHandler)
-	http.HandleFunc("/users/add", PostUserHandler)
+func ListEndpointsHandler(w http.ResponseWriter, r *http.Request) {
+    endpoints := []string{
+        "GET /users",
+        "POST /users/add",
+        "POST /send-message",
+        "GET /status",
+    }
+    for _, endpoint := range endpoints {
+        fmt.Fprintln(w, endpoint)
+    }
+}
 
-	// Novas rotas
-	http.HandleFunc("/send-message", SendMessageHandler)
-	http.HandleFunc("/status", StatusHandler)
+func SetupRoutes() {
+    http.HandleFunc("/endpoints", ListEndpointsHandler) // Novo endpoint para listar as rotas
+    http.HandleFunc("/users", GetUsersHandler)
+    http.HandleFunc("/users/add", PostUserHandler)
+    http.HandleFunc("/send-message", SendMessageHandler)
+    http.HandleFunc("/status", StatusHandler)
 }
 
 func SendMessageHandler(w http.ResponseWriter, r *http.Request) {
