@@ -7,6 +7,13 @@ import (
 	"github.com/ghenoo/microservices-go/cmd/db"
 )
 
+// @Summary Lista todos os usuários
+// @Description Retorna uma lista de usuários
+// @Tags users
+// @Produce  json
+// @Success 200 {array} User
+// @Router /users [get]
+
 func GetUsersHandler(w http.ResponseWriter, r *http.Request) {
     if r.Method == "GET" {
         users, err := db.GetUsers()
@@ -20,6 +27,14 @@ func GetUsersHandler(w http.ResponseWriter, r *http.Request) {
         http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
     }
 }
+
+// @Summary Adiciona um novo usuário
+// @Description Adiciona um usuário com base no payload enviado
+// @Tags users
+// @Accept  json
+// @Produce  json
+// @Success 201 {object} User
+// @Router /users/add [post]
 
 func PostUserHandler(w http.ResponseWriter, r *http.Request) {
     if r.Method == "POST" {
